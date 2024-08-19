@@ -1,23 +1,27 @@
 import 'package:flutter/material.dart';
 import 'formato_texto.dart';
+import 'dado.dart';
+
+const alineacionInicial = Alignment.topLeft;
+const alineacionFinal = Alignment.bottomRight;
 
 class ContenedorGradiente extends StatelessWidget {
-  const ContenedorGradiente({super.key});
+  const ContenedorGradiente(this.colores, {super.key});
+
+  final List<Color> colores;
+
   @override
-  Widget build(context) {
+  Widget build(BuildContext context) {
     return Container(
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
         gradient: LinearGradient(
-          colors: [
-            Color.fromARGB(255, 1, 165, 186),
-            Color.fromARGB(255, 17, 104, 115),
-          ],
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
+          colors: colores,
+          begin: alineacionInicial,
+          end: alineacionFinal,
         ),
       ),
       child: const Center(
-        child: FormatoTexto(),
+        child: Dado(),
       ),
     );
   }
